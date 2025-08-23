@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-
 :root {
     /* Light Theme */
     --bg: #EFE6CA; 
@@ -11,7 +10,7 @@
     --node-bg: rgba(166, 121, 43, 0.25);
 
     --accent: #c40094;
-    --accent2: #950170;
+    --accent-darker: #950170;
     --darkbg: #09001d;
 
     --logo-drop-shadow: #09001d;
@@ -25,15 +24,6 @@
         --node-bg: rgba(123, 111, 72, 0.25);
     }
 }
-
-/*
-extra
-.hidden {
-    display: none;
-}
-
-*/
-
 
 * {
     margin: 0;
@@ -55,7 +45,7 @@ body {
     padding: 20px 10%;
     background: transparent;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Put them (logo and nav button grp) in opposite corners */
     align-items: center;
     z-index: 100;
 }
@@ -86,7 +76,7 @@ body {
 /* MAIN -------------------------------------- */
 .main {
     min-height: 100vh;
-    background: url('') no-repeat;
+    background: url('https://voidprinter.nekoweb.org/quiz/img/background.jpg') no-repeat;
     background-size: cover; 
     background-position: center;
 }
@@ -138,4 +128,95 @@ body {
         background: #09001d;
         box-shadow: none;
     }
+}
+
+
+/* Pop Up ----------------------------------------- */
+.popup-info {
+    position: absolute;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9); /* Moves the pop-up from below the quiz to up and center area */
+    width: 500px;
+    background: #FFF; /* When the pop-up is visible it will have a white bg */
+    border-radius: 6px;
+    padding: 10px 25px;
+    transition: 0.3s ease;
+
+    h2 {
+        font-size: 50px;
+        color: var(--accent);
+    }
+
+    .info {
+        display: block; /* tutotial put inline-block but it put them side by side */
+        font-size: 16px;
+        color: #333;
+        font-weight: 500;
+        margin: 4px 0;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-between; /* Puts them in opposite corners */
+        align-items: center;
+
+        /* Make a dividing line between info and button group below */
+        border-top: 1px solid #999;
+        margin-top: 10px;
+        padding: 15px 0 7px;
+
+        .info-btn {
+            /* Centers the link (a) version */
+            display: inline-flex; 
+            justify-content: center;
+            align-items: center;
+            /* Button and link styling */
+            width: 130px;
+            height: 45px;
+            background: var(--accent);
+            border: 2px solid var(--accent);
+            outline: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #FFF;
+            font-weight: 600;   
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .info-btn:nth-child(1) {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .info-btn:nth-child(1):hover {
+            background: var(--accent);
+            color: #FFF;
+        }
+
+        .info-btn:nth-child(2):hover {
+            background: var(--accent-darker);
+            border-color: var(--accent-darker);
+        }
+    }
+}
+
+/* HIDE/SHOW --------------------------------------
+* This did not work with how the tutorial did it by having the hidden
+* being the default and active being added. So will have hidden there by default
+* and then remove it and add active instead
+*/
+.hidden {
+    /* Hide the pop-up until we are ready to see it */
+    opacity: 0; 
+    pointer-events: none; /* When hidden, need to make sure the pointer doesn't change or work on the hidden buttons */    
+}
+.active {
+    /* When visible, make it visible and restore pointer events */
+    opacity: 1; 
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1); /* Moves the pop-up from below the quiz to up and center area */
 }

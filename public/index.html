@@ -2,14 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Quiz Website HTML CSS JS</title>
+        <link rel="stylesheet" href="https://voidprinter.nekoweb.org/quiz/css/styles.css" />
+        <title>Quiz</title>
     </head>
     <body>
         <main class="main">
-             <header class="header">
+            <header class="header">
                 <a href="#" class="logo">Quiz</a>
                 <nav class="navbar">
                     <a href="#" class="active">Home</a>
@@ -23,11 +23,23 @@
                 <div class="home-content">
                     <h1>Quiz Website</h1>
                     <p>Coming Soon!</p>
-                    <button class="start-btn">Start Quiz</button>
+                    <button class="start-btn" id="start-btn">Start Quiz</button>
                 </div>
             </section>
         </main>
-        <script src="questions.js"></script>
-        <script src="script.js"></script>
+        
+        <div class="popup-info hidden" id="popup-info">
+            <h2>Quiz Guide</h2>
+            <span class="info">1. Some info here</span>
+            <span class="info">2. And more here</span>
+
+            <div class="btn-group">
+                <button class="info-btn exit-btn" id="exit-btn">Exit Quiz</button>
+                <a href="#" class="info-btn continue-btn">Continue</a>
+            </div>
+        </div>
+
+        <script src="https://voidprinter.nekoweb.org/quiz/js/questions.js"></script>
+        <script src="https://voidprinter.nekoweb.org/quiz/js/script.js"></script>
     </body>
 </html>
