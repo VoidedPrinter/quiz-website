@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+:root {
+    /* Light Theme */
+    --bg: #EFE6CA; 
+    --bg-top: #F7F2DC; 
+    --bg-bottom: #F7F3E1;
+
+    --border: rgb(166, 121, 43);
+    --node-bg: rgba(166, 121, 43, 0.25);
+
+    --accent: #c40094;
+    --accent2: #950170;
+    --darkbg: #09001d;
+
+    --logo-drop-shadow: #09001d;
+
+    @media (prefers-color-scheme: dark) {
+        --bg: #393633;
+        --bg-top: #353126;
+        --bg-bottom: #534D44;
+
+        --border: #7b6f48;
+        --node-bg: rgba(123, 111, 72, 0.25);
+    }
+}
+
+/*
+extra
+.hidden {
+    display: none;
+}
+
+*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: #fff;
+}
+
+/* HEADER --------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Quiz "Logo" - made from text */
+.logo {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    filter: drop-shadow(0 0 5px var(--logo-drop-shadow));
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--accent);
+}
+
+/* MAIN -------------------------------------- */
+.main {
+    min-height: 100vh;
+    background: url('') no-repeat;
+    background-size: cover; 
+    background-position: center;
+}
+
+.home {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-content {
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+        font-size: 30px; /* if set to 70 like in the tutorial then the button becomes left aligned */
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    p {
+        font-size: 16x;
+        text-align: center;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin-bottom: 30px;
+    }
+    
+    .start-btn {
+        width: 190px;
+        height: 55px;
+        background: var(--accent);
+        border: 2px solid #FFF;
+        outline: none;
+        border-radius: 6px;
+        box-shadow: 0 0 10px var(--accent);
+        font-size: 18px;
+        color: #FFF;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .start-btn:hover {
+        background: #09001d;
+        box-shadow: none;
+    }
+}
