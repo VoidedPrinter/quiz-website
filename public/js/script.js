@@ -2,6 +2,8 @@ const startBtn = document.getElementById("start-btn");
 const popupInfo = document.getElementById("popup-info");
 const exitBtn = document.getElementById("exit-btn");
 const main = document.getElementById("main");
+const continueBtn = document.getElementById("continue-btn");
+const quizSection = document.getElementById("quiz-section");
 
 function showElement(element) {
     // make element visible by adding the active class
@@ -23,6 +25,12 @@ startBtn.onclick = () => {
 }
 
 exitBtn.onclick = () => {
+    hideElement(popupInfo);
+    main.classList.remove('active');
+}
+
+continueBtn.onclick = () => {
+    quizSection.classList.add('active');
     hideElement(popupInfo);
     main.classList.remove('active');
 }
