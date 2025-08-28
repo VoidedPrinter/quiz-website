@@ -34,6 +34,23 @@
 
 body {
     color: #fff;
+    background: var(--darkbg); /* when pop up is active and main bg is blurred, show black blurred edges instead of white */
+}
+
+/* HIDE/SHOW --------------------------------------
+* This did not work with how the tutorial did it by having the hidden
+* being the default and active being added. So will have hidden there by default
+* and then remove it and add active instead
+*/
+.hidden {
+    /* Hide the pop-up until we are ready to see it */
+    opacity: 0; 
+    pointer-events: none; /* When hidden, need to make sure the pointer doesn't change or work on the hidden buttons */    
+}
+.active {
+    /* When visible, make it visible and restore pointer events */
+    opacity: 1; 
+    pointer-events: auto;
 }
 
 /* HEADER --------------------- */
@@ -79,6 +96,13 @@ body {
     background: url('https://voidprinter.nekoweb.org/quiz/img/background.jpg') no-repeat;
     background-size: cover; 
     background-position: center;
+    pointer-events: auto; /* reg pointer events */    
+    transition: 0.3s ease; /* To the blur active class for main */
+}
+
+.main.active {
+    filter: blur(15px);
+    pointer-events: none; /* When popup info is up, disable main's nav buttons */    
 }
 
 .home {
@@ -102,7 +126,7 @@ body {
     }
     
     p {
-        font-size: 16x;
+        font-size: 16px;
         text-align: center;
         text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         margin-bottom: 30px;
@@ -127,6 +151,12 @@ body {
     .start-btn:hover {
         background: #09001d;
         box-shadow: none;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .home-content {
+        max-width: 500px;
     }
 }
 
@@ -204,19 +234,28 @@ body {
     }
 }
 
-/* HIDE/SHOW --------------------------------------
-* This did not work with how the tutorial did it by having the hidden
-* being the default and active being added. So will have hidden there by default
-* and then remove it and add active instead
-*/
-.hidden {
-    /* Hide the pop-up until we are ready to see it */
-    opacity: 0; 
-    pointer-events: none; /* When hidden, need to make sure the pointer doesn't change or work on the hidden buttons */    
+@media only screen and (max-width: 720px) {
+    .popup-info  {
+        width: 300px;
+
+        h2 {
+            font-size: 30px;
+        }
+
+        .info {
+            font-size: 14px;
+        }
+
+        .btn-group {
+            .info-btn {
+                /* Button and link styling */
+                width: 120px;
+                height: 35px;
+            }
+        }
+    }
 }
-.active {
-    /* When visible, make it visible and restore pointer events */
-    opacity: 1; 
-    pointer-events: auto;
+
+.popup-info.active {
     transform: translate(-50%, -50%) scale(1); /* Moves the pop-up from below the quiz to up and center area */
 }
