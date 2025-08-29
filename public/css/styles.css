@@ -276,7 +276,7 @@ body {
     width: 100%;
 
     /* TESTING */
-    left: 0px; 
+    /* left: 0px;  */
 
     background: var(--darkbg);
     display: flex;
@@ -295,8 +295,8 @@ body {
         display: flex;
         flex-direction: column;
         padding: 20px 30px;
-        /* opacity: 0; */
-        /* pointer-events: none; */
+        opacity: 0; 
+        pointer-events: none;
         transform: scale(0.9);
 
         h1 {
@@ -375,7 +375,7 @@ body {
                 color: rgba(255, 255, 255, 0.3);
                 font-weight: 600;
                 cursor: pointer;
-                pointer-events: none;
+                /* pointer-events: none; */
                 transition: 0.5s;
             }
 
