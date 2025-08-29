@@ -272,11 +272,11 @@ body {
 /* quiz section */
 .quiz-section {
     position: relative;
-    left: -50%; /* pushes section to the left side of the screen. */
+    left: -100%; /* pushes section to the left side of the screen. */
     width: 100%;
 
     /* TESTING */
-    /* left: 0px;  */
+    left: 0px; 
 
     background: var(--darkbg);
     display: flex;
@@ -392,6 +392,55 @@ body {
         transform: scale(1);
         transition: 1s ease;
         transition-delay: 1s;
+    }
+
+    @media only screen and (max-width: 720px) {
+        .quiz-box {
+            width: 95%;
+            transform: scale(0.9);
+    
+            h1 {
+                text-align: center;
+            }
+    
+            .quiz-header {
+                border-bottom: 2px solid var(--accent); /* Dividing line before the questions */
+                margin-bottom: 25px;
+    
+                span {
+                    font-size: 16px;
+                }
+    
+                .header-score {
+                    padding: 5px;
+                    font-size: 14px;
+                }
+            }
+    
+            .question-text {
+                font-size: 22px;
+            }
+    
+            .option-list .option {
+                width: 100%;
+                padding: 10px;
+                font-size: 15px;
+                margin: 13px 0;
+            }
+    
+            .quiz-footer {
+                padding-top: 18px;
+                margin-top: 22px;
+    
+                .question-total {
+                    font-size: 14px;
+                }
+        
+                .next-btn {
+                    font-size: 14px;
+                }
+            }
+        }
     }
 }
 
