@@ -44,7 +44,6 @@ continueBtn.onclick = () => {
     questionCounter(questionCount);
 }
 
-
 // Quiz ------------------------------------------------ //
 let questionCount = 0;
 
@@ -77,11 +76,24 @@ function showQuestions(index) {
 function optionSelected(answer) {
     let userAnswer = answer.textContent.trim(); // It adds a bunch of whitespace in front
     let correctAnswer = questions[questionCount].answer;
-    if (userAnswer == correctAnswer) {
-        console.log("Answer is correct!");
+    let allOptions = optionList.children.length;
+
+    if (userAnswer === correctAnswer) {
         answer.classList.add('correct');
     } else {
         answer.classList.add('incorrect');
+
+        // Show the correct answer
+        for (let i = 0; i < allOptions; i++) {
+           if (optionList.children[i].textContent.trim() === correctAnswer) {
+                optionList.children[i].classList.add('correct');
+           }
+        }
+    }
+
+    // Only get to pick an option once. Disable all when done.
+    for (let i = 0; i < allOptions; i++) {
+        optionList.children[i].classList.add('disabled');
     }
 }
 

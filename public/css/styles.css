@@ -361,6 +361,10 @@ body {
             border-color: var(--incorrect-color);;
         }
 
+        .option-list .option.disabled {
+            pointer-events: none;
+        }
+
         .option-list .option:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.1);
