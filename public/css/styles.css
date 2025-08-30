@@ -13,6 +13,9 @@
     --accent-darker: #950170;
     --darkbg: #0a0710;
 
+    --correct-color: #00c94a;
+    --incorrect-color: #c70053;
+
     --logo-drop-shadow: #09001d;
 
     @media (prefers-color-scheme: dark) {
@@ -344,6 +347,18 @@ body {
             margin: 15px 0;
             cursor: pointer;
             transition: .3s;
+        }
+
+        .option-list .option.correct {
+            background: var(--darkbg);
+            color: var(--correct-color);
+            border-color: var(--correct-color);;
+        }
+
+        .option-list .option.incorrect {
+            background: var(--darkbg);
+            color: var(--incorrect-color);
+            border-color: var(--incorrect-color);;
         }
 
         .option-list .option:hover {

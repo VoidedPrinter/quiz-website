@@ -28,6 +28,7 @@ startBtn.onclick = () => {
     showElement(main);
 }
 
+// Info ------------------------------------------------ //
 exitBtn.onclick = () => {
     hideElement(popupInfo);
     main.classList.remove('active');
@@ -39,29 +40,52 @@ continueBtn.onclick = () => {
     main.classList.remove('active');
     quizBox.classList.add('active');
 
-    showQuestions(0);
+    showQuestions(questionCount);
+    questionCounter(questionCount);
 }
+
+
+// Quiz ------------------------------------------------ //
+let questionCount = 0;
 
 nextBtn.onclick = () => {
     if (questionCount < questions.length - 1) {
         questionCount++;
         showQuestions(questionCount);
+        questionCounter(questionCount);
     } else {
         console.log("Quiz Completed!");
     }
 }
 
-// Quiz
-let questionCount = 0;
-
 function showQuestions(index) {
+    // Set the question text
     const questionText = document.getElementById("question-text");
     questionText.textContent = `${questions[index].number}. ${questions[index].question}`;
 
-    const option1 = document.getElementById("option-1");
-    option1.textContent = `${questions[index].options[0]}`;
+    // Generate the option-list HTML
+    const option1 = document.getElementById("option-list");
+    let optionTag = "";
+    for (let i = 0; i < questions.length-1; i++) {
+        optionTag += `<div class="option" onclick="optionSelected(this)">
+                        <span>${questions[index].options[i]}</span>
+                    </div>`;
+    }
+    option1.innerHTML = optionTag;
+}
 
-    document.getElementById("option-2").textContent = `${questions[index].options[1]}`;
-    document.getElementById("option-3").textContent = `${questions[index].options[2]}`;
-    document.getElementById("option-4").textContent = `${questions[index].options[3]}`;
+function optionSelected(answer) {
+    let userAnswer = answer.textContent.trim(); // It adds a bunch of whitespace in front
+    let correctAnswer = questions[questionCount].answer;
+    if (userAnswer == correctAnswer) {
+        console.log("Answer is correct!");
+        answer.classList.add('correct');
+    } else {
+        answer.classList.add('incorrect');
+    }
+}
+
+function questionCounter(index) {
+    const questionTotal = document.getElementById("question-total");
+    questionTotal.textContent = `${questions[index].number} / ${questions.length} Questions`;
 }
