@@ -9,6 +9,7 @@ const quizBox = document.getElementById("quiz-box");
 const nextBtn = document.getElementById("next-btn");
 const optionList = document.getElementById("option-list");
 
+
 function showElement(element) {
     // make element visible by adding the active class
     // and removing the hidden class
@@ -46,6 +47,7 @@ continueBtn.onclick = () => {
 
 // Quiz ------------------------------------------------ //
 let questionCount = 0;
+let userScore = 0;
 
 nextBtn.onclick = () => {
     if (questionCount < questions.length - 1) {
@@ -80,6 +82,8 @@ function optionSelected(answer) {
 
     if (userAnswer === correctAnswer) {
         answer.classList.add('correct');
+        userScore++;
+        updateUserScore();
     } else {
         answer.classList.add('incorrect');
 
@@ -95,6 +99,11 @@ function optionSelected(answer) {
     for (let i = 0; i < allOptions; i++) {
         optionList.children[i].classList.add('disabled');
     }
+}
+
+function updateUserScore() {
+    const headerScore = document.getElementById("header-score");
+    headerScore.textContent = `Score ${userScore} / ${questions.length}`;
 }
 
 function questionCounter(index) {
