@@ -394,13 +394,21 @@ body {
                 color: rgba(255, 255, 255, 0.3);
                 font-weight: 600;
                 cursor: pointer;
-                /* pointer-events: none; */
+                pointer-events: none;
                 transition: 0.5s;
             }
 
-            .next-btn:hover {
+            .next-btn.active {
                 background: var(--accent);
                 border-color: var(--accent);
+                color: #FFF;
+                cursor: pointer;
+                pointer-events: auto;
+            }
+
+            .next-btn.active:hover {
+                background: var(--accent-darker);
+                border-color: var(--accent-darker);
             }
         }
     }

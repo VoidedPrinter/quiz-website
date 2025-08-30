@@ -54,6 +54,9 @@ nextBtn.onclick = () => {
         questionCount++;
         showQuestions(questionCount);
         questionCounter(questionCount);
+
+        // Disable the button for the next question
+        nextBtn.classList.remove('active');
     } else {
         console.log("Quiz Completed!");
     }
@@ -99,6 +102,9 @@ function optionSelected(answer) {
     for (let i = 0; i < allOptions; i++) {
         optionList.children[i].classList.add('disabled');
     }
+
+    // Only go to next question after picking an option
+    nextBtn.classList.add('active');
 }
 
 function updateUserScore() {
