@@ -301,6 +301,8 @@ body {
         opacity: 0; 
         pointer-events: none;
         transform: scale(0.9);
+        transition: 0.3s ease;
+        transition-delay: 0s;
 
         h1 {
             font-size: 32px;
@@ -421,94 +423,6 @@ body {
         transition-delay: 1s;
     }
 
-    .result-box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 500px;
-        background: transparent;
-        border: 2px solid var(--accent);
-        border-radius: 6px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        h2 {
-            font-size: 52px;
-        }
-
-        .percentage-container {
-            width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0 40px;
-
-            .circular-progress {
-                position: relative;
-                width: 250px;
-                height: 250px;
-                background: conic-gradient(var(--accent) 3.6deg, rgba(255,255,255, 0.1) 0deg);
-                border-radius: 50%;
-
-                /* Put the % in the center of the circle */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                .progress-value {
-                    font-size: 45px;
-                    font-weight: 600
-                }
-            }
-
-            .score-text {
-                font-size: 26px;
-                font-weight: 600;
-                margin-top: 20px;
-            }
-        }
-
-        .buttons {
-            display: flex;
-
-            button {
-                width: 130px;
-                height: 45px;
-                background: var(--accent);
-                border: 2px solid var(--accent);
-                outline: none;
-                border-radius: 6px;
-                font-size: 16px;
-                color: #FFF;
-                font-weight: 600;   
-                margin: 0 20px 20px;
-                cursor: pointer;
-                transition: 0.5s;
-            }
-
-            button:nth-child(1):hover {
-                background: var(--accent-darker);
-                border-color: var(--accent-darker);
-            }
-
-            button:nth-child(2) {
-                background: transparent;
-                color: var(--accent);
-            }
-
-            button:nth-child(2):hover {
-                background: var(--accent);
-                color: #fff;
-            }
-        }
-
-    }
-
-    
-
     @media only screen and (max-width: 720px) {
         .quiz-box {
             width: 95%;
@@ -562,4 +476,117 @@ body {
 .quiz-section.active {
     /* Move the quiz section from the -50% left to 0 - it will slide in from the left */
     left: 0;
+}
+
+/* RESULT SECTION ------------------------------------ */
+.result-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.9);
+    width: 500px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Hide initially and disable pointer events */
+    opacity: 0; 
+    pointer-events: none; /* When hidden, need to make sure the pointer doesn't change or work on the hidden buttons */    
+
+    /* Transition away? */
+    transition: 0.3s ease;
+
+    h2 {
+        font-size: 52px;
+    }
+
+    .percentage-container {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0 40px;
+
+        .circular-progress {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            background: conic-gradient(var(--accent) 3.6deg, rgba(255,255,255, 0.1) 0deg);
+            border-radius: 50%;
+
+            /* Put the % in the center of the circle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .progress-value {
+                position: relative; /* Make it float on top of the inner dark circle from .circular-progress::before */
+                font-size: 45px;
+                font-weight: 600
+            }
+        }
+
+        /*  Inner circle in the progress circle. 
+            Set as bg colour to make the circle only fill up on the outside */
+        .circular-progress::before {
+            content: '';
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            background: var(--darkbg);
+            border-radius: 50%;
+        }
+
+        .score-text {
+            font-size: 26px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+    }
+
+    .buttons {
+        display: flex;
+
+        button {
+            width: 130px;
+            height: 45px;
+            background: var(--accent);
+            border: 2px solid var(--accent);
+            outline: none;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #FFF;
+            font-weight: 600;   
+            margin: 0 20px 20px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        button:nth-child(1):hover {
+            background: var(--accent-darker);
+            border-color: var(--accent-darker);
+        }
+
+        button:nth-child(2) {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        button:nth-child(2):hover {
+            background: var(--accent);
+            color: #fff;
+        }
+    }
+
+}
+
+.result-box.active {
+    /* Make visible and restore events */
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
 }

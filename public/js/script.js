@@ -5,6 +5,7 @@ const main = document.getElementById("main");
 const continueBtn = document.getElementById("continue-btn");
 const quizSection = document.getElementById("quiz-section");
 const quizBox = document.getElementById("quiz-box");
+const resultBox = document.getElementById("result-box");
 
 const nextBtn = document.getElementById("next-btn");
 const optionList = document.getElementById("option-list");
@@ -59,6 +60,7 @@ nextBtn.onclick = () => {
         nextBtn.classList.remove('active');
     } else {
         console.log("Quiz Completed!");
+        showResultBox();
     }
 }
 
@@ -70,7 +72,7 @@ function showQuestions(index) {
     // Generate the option-list HTML
     const option1 = document.getElementById("option-list");
     let optionTag = "";
-    for (let i = 0; i < questions.length-1; i++) {
+    for (let i = 0; i < questions[index].options.length; i++) {
         optionTag += `<div class="option" onclick="optionSelected(this)">
                         <span>${questions[index].options[i]}</span>
                     </div>`;
@@ -115,4 +117,10 @@ function updateUserScore() {
 function questionCounter(index) {
     const questionTotal = document.getElementById("question-total");
     questionTotal.textContent = `${questions[index].number} / ${questions.length} Questions`;
+}
+
+/** Result Box adn Hide QuizBox */
+function showResultBox() {
+    quizBox.classList.remove('active');
+    resultBox.classList.add("active");
 }
