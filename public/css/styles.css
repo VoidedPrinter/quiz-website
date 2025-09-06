@@ -10,7 +10,7 @@
     --node-bg: rgba(166, 121, 43, 0.25);
 
     --accent: #c40094;
-    --accent-darker: #950170;
+    --accent-darker: #760059;
     --darkbg: #0a0710;
 
     --correct-color: #00c94a;
@@ -420,6 +420,94 @@ body {
         transition: 1s ease;
         transition-delay: 1s;
     }
+
+    .result-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 500px;
+        background: transparent;
+        border: 2px solid var(--accent);
+        border-radius: 6px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            font-size: 52px;
+        }
+
+        .percentage-container {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0 40px;
+
+            .circular-progress {
+                position: relative;
+                width: 250px;
+                height: 250px;
+                background: conic-gradient(var(--accent) 3.6deg, rgba(255,255,255, 0.1) 0deg);
+                border-radius: 50%;
+
+                /* Put the % in the center of the circle */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .progress-value {
+                    font-size: 45px;
+                    font-weight: 600
+                }
+            }
+
+            .score-text {
+                font-size: 26px;
+                font-weight: 600;
+                margin-top: 20px;
+            }
+        }
+
+        .buttons {
+            display: flex;
+
+            button {
+                width: 130px;
+                height: 45px;
+                background: var(--accent);
+                border: 2px solid var(--accent);
+                outline: none;
+                border-radius: 6px;
+                font-size: 16px;
+                color: #FFF;
+                font-weight: 600;   
+                margin: 0 20px 20px;
+                cursor: pointer;
+                transition: 0.5s;
+            }
+
+            button:nth-child(1):hover {
+                background: var(--accent-darker);
+                border-color: var(--accent-darker);
+            }
+
+            button:nth-child(2) {
+                background: transparent;
+                color: var(--accent);
+            }
+
+            button:nth-child(2):hover {
+                background: var(--accent);
+                color: #fff;
+            }
+        }
+
+    }
+
+    
 
     @media only screen and (max-width: 720px) {
         .quiz-box {
