@@ -6,6 +6,8 @@ const continueBtn = document.getElementById("continue-btn");
 const quizSection = document.getElementById("quiz-section");
 const quizBox = document.getElementById("quiz-box");
 const resultBox = document.getElementById("result-box");
+const tryAgainBtn = document.getElementById("tryagain-btn");
+const goHomeBtn = document.getElementById("gohome-btn");
 
 const nextBtn = document.getElementById("next-btn");
 const optionList = document.getElementById("option-list");
@@ -42,8 +44,13 @@ continueBtn.onclick = () => {
     main.classList.remove('active');
     quizBox.classList.add('active');
 
+    resetQuizDisplay();
+}
+
+function resetQuizDisplay() {
     showQuestions(questionCount);
     questionCounter(questionCount);
+    updateUserScore();
 }
 
 // Quiz ------------------------------------------------ //
@@ -123,4 +130,51 @@ function questionCounter(index) {
 function showResultBox() {
     quizBox.classList.remove('active');
     resultBox.classList.add("active");
+
+    const scoreText = document.getElementById("score-text");
+    scoreText.textContent = `Your Score ${userScore} out of ${questions.length}`;
+
+    const circularProgress = document.getElementById("circular-progress");
+    const progressValue = document.getElementById("progress-value");
+    let progressStartValue = -1; // Prevent it from increasing forever when score is 0
+    let progressEndValue = (userScore / questions.length) * 100;
+    let speed = 20;
+
+    let progress = setInterval( () => {
+        // Tick up the percentage counter
+        progressStartValue++;
+        progressValue.textContent = `${progressStartValue}%`;
+
+        // Tick up the circular progress wheel
+        circularProgress.style.background = `conic-gradient(var(--accent) ${progressStartValue * 3.6}deg, rgba(255,255,255, 0.1) 0deg)`;
+
+        // End progress counting up when it hits progressEndValue
+        if (progressStartValue === progressEndValue) {
+            clearInterval(progress);
+        }
+    }, speed);
+}
+
+tryAgainBtn.onclick = () => {
+    quizBox.classList.add('active');
+    resultBox.classList.remove('active');
+    nextBtn.classList.remove('active');
+
+    // reset score
+    questionCount = 0;
+    userScore = 0;
+
+    resetQuizDisplay();
+}
+
+goHomeBtn.onclick = () => {
+    quizSection.classList.remove('active');
+    resultBox.classList.remove('active');
+    nextBtn.classList.remove('active');
+
+    // reset score
+    questionCount = 0;
+    userScore = 0;
+
+    resetQuizDisplay();
 }
