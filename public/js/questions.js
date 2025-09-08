@@ -6,7 +6,7 @@ let questions = [
         options: [
             "Structure",
             "Styling",
-            "Interative",
+            "Interactive",
             "Testing"
         ]
     },
@@ -15,7 +15,7 @@ let questions = [
         question: "CSS",
         answer: "Styling",
         options: [
-            "Interative",
+            "Interactive",
             "Structure",
             "Styling",
             "Testing"
@@ -24,11 +24,11 @@ let questions = [
     {
         number: 3,
         question: "JavaScript",
-        answer: "Interative",
+        answer: "Interactive",
         options: [
             "Styling",
             "Structure",
-            "Interative",
+            "Interactive",
             "Testing"
         ]
     },
@@ -38,7 +38,7 @@ let questions = [
         answer: "Structure",
         options: [
             "Structure",
-            "Interative",
+            "Interactive",
             "Testing",
             "Styling"
         ]
@@ -51,7 +51,7 @@ let questions = [
             "Styling",
             "Testing",
             "Structure",
-            "Interative"
+            "Interactive"
         ]
     }
 ]
