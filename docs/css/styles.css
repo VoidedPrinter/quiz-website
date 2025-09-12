@@ -109,7 +109,7 @@ body {
     pointer-events: none; /* When popup info is up, disable main's nav buttons */    
 }
 
-/* COntains home and quiz section */
+/* Contains home and quiz section */
 .container {
     display: flex;
     height: 100vh;
@@ -277,10 +277,6 @@ body {
     position: relative;
     left: -100%; /* pushes section to the left side of the screen. */
     width: 100%;
-
-    /* TESTING */
-    /* left: 0px;  */
-
     background: var(--darkbg);
     display: flex;
     justify-content: center;
@@ -309,7 +305,7 @@ body {
             text-align: center;
             
             /* !! linear gradient isn't working? Should have the accent colour in the center and then be transparent on the edges... */
-            background: linear-graditent(45deg, transparent, var(--accent), transparent);
+            background: linear-gradient(45deg, transparent, var(--accent), transparent);
             
             border-radius: 6px;
         }
