@@ -97,9 +97,13 @@ body {
 /* MAIN -------------------------------------- */
 .main {
     min-height: 100vh;
-    background: url('https://voidprinter.nekoweb.org/quiz/img/background.jpg') no-repeat;
-    background-size: cover; 
-    background-position: center;
+    
+    /* background: url('someimage.jpg') no-repeat; */
+    /* background-size: cover;  */
+    /* background-position: center; */
+
+    background-color: var(--accent-darker);
+
     pointer-events: auto; /* reg pointer events */    
     transition: 0.3s ease; /* To the blur active class for main */
 }
@@ -304,7 +308,7 @@ body {
             font-size: 32px;
             text-align: center;
             
-            /* !! linear gradient isn't working? Should have the accent colour in the center and then be transparent on the edges... */
+            /* linear gradient - accent colour in the center and then be transparent on the edges */
             background: linear-gradient(45deg, transparent, var(--accent), transparent);
             
             border-radius: 6px;
